@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 const statusMessage = document.getElementById('statusMessage');
 const inventoryContainer = document.getElementById('inventory');
 
-const TILE_SIZE = 36;
-const WORLD_WIDTH = 20;
-const WORLD_HEIGHT = 15;
+const TILE_SIZE = 24;
+const WORLD_WIDTH = 15;
+const WORLD_HEIGHT = 10;
 const GRAVITY = 0.7;
 const JUMP_SPEED = -12.5;
 const MOVE_SPEED = 3.2;
@@ -40,34 +40,34 @@ const blocks = [
 let selectedBlock = blocks[0];
 let timeOfDay = 0.18; // morning
 const world = Array.from({ length: WORLD_HEIGHT }, (_, y) => {
-  if (y >= 12) {
+  if (y >= 7) {
     return Array.from({ length: WORLD_WIDTH }, () => 2);
   }
 
-  if (y === 11) {
+  if (y === 6) {
     return Array.from({ length: WORLD_WIDTH }, () => 1);
   }
 
   return Array.from({ length: WORLD_WIDTH }, (_, x) => {
-    if (x >= 6 && x <= 14 && y >= 8 && y < 11) {
+    if (x >= 4 && x <= 10 && y >= 6 && y < 9) {
       return 5;
     }
-    if (x >= 7 && x <= 13 && y === 7 && Math.random() < 0.8) {
+    if (x >= 5 && x <= 9 && y === 5 && Math.random() < 0.8) {
       return 6;
     }
-    if (x >= 6 && x <= 14 && y === 9 && Math.random() < 0.2) {
+    if (x >= 4 && x <= 10 && y === 7 && Math.random() < 0.2) {
       return 7;
     }
-    if (y === 10 && Math.random() < 0.05) {
+    if (y === 6 && Math.random() < 0.05) {
       return 14; // Tree
     }
-    if (y === 10 && Math.random() < 0.1) {
+    if (y === 6 && Math.random() < 0.1) {
       return 22; // Bush
     }
-    if (y === 11 && Math.random() < 0.03) {
+    if (y === 7 && Math.random() < 0.03) {
       return 16; // Lily
     }
-    if (y === 10 && Math.random() < 0.05) {
+    if (y === 6 && Math.random() < 0.05) {
       return 23; // Flower
     }
     return 0;
@@ -75,8 +75,8 @@ const world = Array.from({ length: WORLD_HEIGHT }, (_, y) => {
 });
 
 const player = {
-  x: TILE_SIZE * 2,
-  y: TILE_SIZE * 7,
+  x: TILE_SIZE * 1,
+  y: TILE_SIZE * 4,
   width: 24,
   height: 44,
   vx: 0,
@@ -95,17 +95,17 @@ const keys = {
 const entities = [];
 
 const animalSpawn = [
-  { type: 'cow', count: 2 },
-  { type: 'chicken', count: 3 },
-  { type: 'crab', count: 2 },
-  { type: 'turtle', count: 2 },
-  { type: 'fish', count: 4 },
-  { type: 'stingray', count: 2 },
+  { type: 'cow', count: 1 },
+  { type: 'chicken', count: 1 },
+  { type: 'crab', count: 1 },
+  { type: 'turtle', count: 1 },
+  { type: 'fish', count: 2 },
+  { type: 'stingray', count: 1 },
   { type: 'shark', count: 1 },
-  { type: 'frog', count: 3 },
-  { type: 'sheep', count: 2 },
-  { type: 'bird', count: 4 },
-  { type: 'pig', count: 2 },
+  { type: 'frog', count: 1 },
+  { type: 'sheep', count: 1 },
+  { type: 'bird', count: 2 },
+  { type: 'pig', count: 1 },
   { type: 'thresher', count: 1 },
 ];
 
@@ -675,18 +675,18 @@ function spawnEntities() {
     for (let i = 0; i < group.count; i += 1) {
       const x = 80 + Math.random() * 520;
       const y = {
-        cow: 280,
-        chicken: 260,
-        crab: 330,
-        turtle: 320,
-        fish: 300,
-        stingray: 320,
-        shark: 320,
-        frog: 290,
-        sheep: 270,
-        bird: 200,
-        pig: 275,
-        thresher: 310,
+        cow: 120,
+        chicken: 100,
+        crab: 180,
+        turtle: 170,
+        fish: 150,
+        stingray: 170,
+        shark: 170,
+        frog: 140,
+        sheep: 110,
+        bird: 80,
+        pig: 115,
+        thresher: 160,
       }[group.type];
 
       entities.push({
