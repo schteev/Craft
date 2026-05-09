@@ -93,21 +93,14 @@ canvas {
   line-height: 1.6;
 }
 
-.menu {
-  text-align: center;
-  padding: 40px;
+.panel {
+  display: grid;
+  gap: 12px;
 }
 
-.menu h1 {
-  font-size: clamp(3rem, 5vw, 4rem);
-  margin-bottom: 20px;
+#statusMessage {
+  margin: 0;
+  color: #111827;
+  font-weight: 600;
 }
 
-.menu p {
-  margin-bottom: 30px;
-  color: #4b5563;
-}
-
-.game {
-  display: none;
-}

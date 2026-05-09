@@ -59,104 +59,6 @@ const keys = {
   crawl: false,
 };
 
-const animalSpawn = [
-  { type: 'cow', count: 1 },
-  { type: 'chicken', count: 1 },
-  { type: 'crab', count: 1 },
-  { type: 'turtle', count: 1 },
-  { type: 'fish', count: 2 },
-  { type: 'stingray', count: 1 },
-  { type: 'shark', count: 1 },
-  { type: 'frog', count: 1 },
-  { type: 'sheep', count: 1 },
-  { type: 'bird', count: 2 },
-  { type: 'pig', count: 1 },
-  { type: 'thresher', count: 1 },
-];
-
-function generateWorld() {
-  world = Array.from({ length: WORLD_HEIGHT }, (_, y) => {
-    if (y >= 7) {
-      return Array.from({ length: WORLD_WIDTH }, () => 2);
-    }
-
-    if (y === 6) {
-      return Array.from({ length: WORLD_WIDTH }, () => 1);
-    }
-
-    return Array.from({ length: WORLD_WIDTH }, (_, x) => {
-      const waterStart = Math.floor(WORLD_WIDTH * 0.3);
-      const waterEnd = Math.floor(WORLD_WIDTH * 0.7);
-      if (x >= waterStart && x <= waterEnd && y >= 4 && y < 7) {
-        return 5;
-      }
-      if (x >= waterStart + 1 && x <= waterEnd - 1 && y === 3 && Math.random() < 0.8) {
-        return 6;
-      }
-      if (x >= waterStart && x <= waterEnd && y === 5 && Math.random() < 0.2) {
-        return 7;
-      }
-      if (y === 6 && Math.random() < 0.05) {
-        return 14; // Tree
-      }
-      if (y === 6 && Math.random() < 0.1) {
-        return 22; // Bush
-      }
-      if (y === 7 && Math.random() < 0.03) {
-        return 16; // Lily
-      }
-      if (y === 6 && Math.random() < 0.05) {
-        return 23; // Flower
-      }
-      return 0;
-    });
-  });
-}
-
-function spawnEntities() {
-  entities = [];
-  animalSpawn.forEach((group) => {
-    for (let i = 0; i < group.count; i += 1) {
-      const x = 40 + Math.random() * (WORLD_WIDTH * TILE_SIZE - 80);
-      const y = {
-        cow: 120,
-        chicken: 100,
-        crab: 180,
-        turtle: 170,
-        fish: 150,
-        stingray: 170,
-        shark: 170,
-        frog: 140,
-        sheep: 110,
-        bird: 80,
-        pig: 115,
-        thresher: 160,
-      }[group.type];
-
-      entities.push({
-        type: group.type,
-        x,
-        y,
-        vx: 0,
-        dir: Math.random() < 0.5 ? -1 : 1,
-      });
-    }
-  });
-}
-
-function startGame() {
-  document.getElementById('menu').style.display = 'none';
-  document.getElementById('game').style.display = 'block';
-
-  generateWorld();
-  spawnEntities();
-  buildInventory();
-  updateStatus();
-  gameLoop();
-}
-
-document.getElementById('startButton').addEventListener('click', startGame);
-
 function isSolidTile(tile) {
   return tile > 0 && tile !== 5 && tile !== 7;
 }
@@ -821,3 +723,4 @@ canvas.addEventListener('contextmenu', (event) => {
 
 buildInventory();
 updateStatus();
+gameLoop();

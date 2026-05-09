@@ -8,37 +8,28 @@
 </head>
 <body>
   <main class="app-shell">
-    <div id="menu" class="menu">
+    <header class="hero">
       <h1>Craft</h1>
       <p>Block-based browser game with crawling, inventory, and terrain.</p>
-      <button id="startButton" class="button">Create New World</button>
-    </div>
+    </header>
 
-    <div id="game" class="game" style="display: none;">
-      <header class="hero">
-        <h1>Craft</h1>
-        <p>Block-based browser game with crawling, inventory, and terrain.</p>
-      </header>
+    <section class="game-board">
+      <div class="canvas-frame">
+        <canvas id="gameCanvas" width="360" height="240"></canvas>
+      </div>
 
-      <section class="game-board">
-        <div class="canvas-frame">
-          <canvas id="gameCanvas" width="360" height="240"></canvas>
+      <div class="hud">
+        <div class="inventory" id="inventory"></div>
+        <div class="controls">
+          <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
+          <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
         </div>
+      </div>
+    </section>
 
-        <div class="hud">
-          <div class="inventory" id="inventory"></div>
-          <div class="controls">
-            <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
-            <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
-            <p>Night brings zombies, water has fish/sea life, and the world includes food, glass, lasers, coral, turtles, sharks, threshers, cows, chickens, frogs, sheep, pigs, birds, chests, trees, branches, lilies, flowers, buckets, television, computers, camera, pots, and bushes.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel">
-        <p id="statusMessage">Ready to start...</p>
-      </section>
-    </div>
+    <section class="panel">
+      <p id="statusMessage">Game loaded...</p>
+    </section>
   </main>
 
   <script src="script.js"></script>
