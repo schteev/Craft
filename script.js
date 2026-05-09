@@ -38,12 +38,23 @@ const blocks = [
   { id: 23, name: 'Flower', color: '#f97316', highlight: '#ea580c' },
 
 let selectedBlock = blocks[0];
-let timeOfDay = 0.18; // morning
-let world;
-let entities = [];
+let timeOfDay = 0.18;
+const world = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+  [0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0],
+  [0, 0, 0, 5, 7, 5, 7, 5, 7, 5, 0, 0, 0, 0, 0],
+  [0, 14, 0, 22, 0, 5, 0, 5, 0, 23, 0, 14, 0, 22, 0],
+  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+];
+
 const player = {
   x: TILE_SIZE * 1,
-  y: TILE_SIZE * 4,
+  y: TILE_SIZE * 3,
   width: 24,
   height: 44,
   vx: 0,
@@ -58,6 +69,31 @@ const keys = {
   jump: false,
   crawl: false,
 };
+
+const entities = [
+  { type: 'fish', x: 80, y: 115, vx: 0, dir: 1 },
+  { type: 'fish', x: 140, y: 125, vx: 0, dir: -1 },
+  { type: 'shark', x: 200, y: 130, vx: 0, dir: 1 },
+  { type: 'cow', x: 60, y: 165, vx: 0, dir: 1 },
+  { type: 'chicken', x: 120, y: 150, vx: 0, dir: 1 },
+  { type: 'pig', x: 180, y: 160, vx: 0, dir: -1 },
+  { type: 'bird', x: 100, y: 80, vx: 0, dir: 1 },
+];
+
+function buildInventory() {
+  inventoryContainer.innerHTML = '';
+  blocks.forEach((block) => {
+    const button = document.createElement('button');
+    button.textContent = block.name;
+    button.dataset.blockId = block.id;
+    button.classList.toggle('selected', selectedBlock.id === block.id);
+    button.addEventListener('click', () => {
+      selectedBlock = block;
+      buildInventory();
+    });
+    inventoryContainer.appendChild(button);
+  });
+}
 
 function isSolidTile(tile) {
   return tile > 0 && tile !== 5 && tile !== 7;
