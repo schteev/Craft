@@ -8,29 +8,37 @@
 </head>
 <body>
   <main class="app-shell">
-    <header class="hero">
+    <div id="menu" class="menu">
       <h1>Craft</h1>
       <p>Block-based browser game with crawling, inventory, and terrain.</p>
-    </header>
+      <button id="startButton" class="button">Create New World</button>
+    </div>
 
-    <section class="game-board">
-      <div class="canvas-frame">
-        <canvas id="gameCanvas" width="360" height="240"></canvas>
-      </div>
+    <div id="game" class="game" style="display: none;">
+      <header class="hero">
+        <h1>Craft</h1>
+        <p>Block-based browser game with crawling, inventory, and terrain.</p>
+      </header>
 
-      <div class="hud">
-        <div class="inventory" id="inventory"></div>
-        <div class="controls">
-          <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
-          <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
-          <p>Night brings zombies, water has fish/sea life, and the world includes food, glass, lasers, coral, turtles, sharks, threshers, cows, chickens, frogs, sheep, pigs, birds, chests, trees, branches, lilies, flowers, buckets, television, computers, camera, pots, and bushes.</p>
+      <section class="game-board">
+        <div class="canvas-frame">
+          <canvas id="gameCanvas" width="360" height="240"></canvas>
         </div>
-      </div>
-    </section>
 
-    <section class="panel">
-      <p id="statusMessage">Loading world...</p>
-    </section>
+        <div class="hud">
+          <div class="inventory" id="inventory"></div>
+          <div class="controls">
+            <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
+            <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
+            <p>Night brings zombies, water has fish/sea life, and the world includes food, glass, lasers, coral, turtles, sharks, threshers, cows, chickens, frogs, sheep, pigs, birds, chests, trees, branches, lilies, flowers, buckets, television, computers, camera, pots, and bushes.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <p id="statusMessage">Ready to start...</p>
+      </section>
+    </div>
   </main>
 
   <script src="script.js"></script>
