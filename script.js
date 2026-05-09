@@ -35,7 +35,9 @@ const blocks = [
   { id: 19, name: 'Computer', color: '#374151', highlight: '#1f2937' },
   { id: 20, name: 'Camera', color: '#6b7280', highlight: '#4b5563' },
   { id: 21, name: 'Pot', color: '#92400e', highlight: '#78350f' },
+  { id: 22, name: 'Bush', color: '#16a34a', highlight: '#15803d' },
   { id: 23, name: 'Flower', color: '#f97316', highlight: '#ea580c' },
+];
 
 let selectedBlock = blocks[0];
 let timeOfDay = 0.18;
