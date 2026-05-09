@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Craft Game</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <h1>Craft</h1>
+      <p>Block-based browser game with crawling, inventory, and terrain.</p>
+    </header>
+
+    <section class="game-board">
+      <div class="canvas-frame">
+        <canvas id="gameCanvas" width="720" height="540"></canvas>
+      </div>
+
+      <div class="hud">
+        <div class="inventory" id="inventory"></div>
+        <div class="controls">
+          <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
+          <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
+          <p>Night brings zombies, water has fish/sea life, and the world includes food, glass, lasers, coral, turtles, sharks, threshers, cows, chickens, frogs, sheep, pigs, birds, chests, trees, branches, lilies, flowers, buckets, television, computers, camera, pots, and bushes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p id="statusMessage">Loading world...</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
