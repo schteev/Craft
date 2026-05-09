@@ -3,33 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Craft Game</title>
+  <title>Craft 3D</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <main class="app-shell">
-    <header class="hero">
-      <h1>Craft</h1>
-      <p>Block-based browser game with crawling, inventory, and terrain.</p>
-    </header>
+  <main class="game-shell">
+    <canvas id="gameCanvas" aria-label="Craft 3D game world"></canvas>
 
-    <section class="game-board">
-      <div class="canvas-frame">
-        <canvas id="gameCanvas" width="360" height="240"></canvas>
+    <section class="topbar" aria-label="Game status">
+      <div>
+        <h1>Craft 3D</h1>
+        <p id="statusMessage">Loading world...</p>
       </div>
-
-      <div class="hud">
-        <div class="inventory" id="inventory"></div>
-        <div class="controls">
-          <p><strong>W / ↑</strong> Jump · <strong>A / ←</strong> Move left · <strong>D / →</strong> Move right</p>
-          <p><strong>C</strong> Crawl · <strong>Click</strong> Place block · <strong>Shift+Click</strong> Remove block</p>
-        </div>
+      <div class="controls">
+        <span>Drag: rotate</span>
+        <span>Wheel: zoom</span>
+        <span>Click: place</span>
+        <span>Shift+Click: remove</span>
       </div>
     </section>
 
-    <section class="panel">
-      <p id="statusMessage">Game loaded...</p>
-    </section>
+    <nav class="gamebar" aria-label="Choose block to place">
+      <div class="gamebar-items" id="gamebar"></div>
+    </nav>
   </main>
 
   <script src="script.js"></script>
